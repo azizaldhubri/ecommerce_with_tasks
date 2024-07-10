@@ -93,10 +93,11 @@ export default function AddTaskes(){
                     </Form.Group>
                     <Form.Group  className="d-flex form-control border-0 gap-2">
                             <Form.Select style={{width:'30%'}}
-                            value={form.receivertask_id}
+                            value={receivertask_id}
                             name='receivertask_id'
                             // onChange={handelChange}
-                            onChange={(e)=>setReceivertask_id(e.target.value)}>
+                            onChange={(e)=>setReceivertask_id(e.target.value)}
+                            >
                                 <option  disabled={true} >Select User</option>
                                 {selectUser}
                             </Form.Select>
