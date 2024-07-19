@@ -41,17 +41,10 @@ export default function Landing(){
                 
             </div>
           </Container> 
-          <div className="position-absolute top-0 start-0    mt-2 ms-2 d-flex flex-column">
-
-          <Link  className='bg-primary rounded border  text-center p-2 ' to='/login'>
-                <h4 className="text-white  ">Login</h4>
-         </Link>  
-         <Link  className='bg-primary rounded border p-2 mt-2' to='/register'>
-                <h4 className="text-white  ">Register</h4>
-         </Link>   
-         {/* <Link  className='bg-primary rounded border p-2 mt-2' to='/Logout'> */}
+          <div className="position-absolute top-0 start-0    mt-2 ms-2 d-flex flex-column">          
+       
                 <button className=" btn btn-primary mt-2 " onClick={handleLogout}>Logout</button>
-         {/* </Link>    */}
+         
           </div>
        
     </div>

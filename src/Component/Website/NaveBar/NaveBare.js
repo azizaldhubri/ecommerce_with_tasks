@@ -7,6 +7,8 @@ import { useEffect, useState } from "react"
  import {CAT} from './../../../Api/Api.js'
 import StringSlice from "../../../Helpers/StringSlice.js";
 import ShowSkeleton from "../Skeleton/Skeleton.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -27,9 +29,9 @@ export default function NaveBare(){
     return(
         
          <Container className='py-3 border-0'>
-            <div className="w-100  d-flex align-items-center justify-content-between flex-wrap">
+            <div className="w-100  d-flex align-items-center justify-content-between flex-wrap ">
            
-                    <Link className='col-3' to='/' >
+                    <Link className='col-3  ' to='/' >
                     <img width='200px' src={require('../../../Assets/images/logo.png')} alt=""></img>
                     </Link>
                 
@@ -48,11 +50,20 @@ export default function NaveBare(){
                     <Link>
                     <img width='60px' src={require('../../../Assets/images/cart.png')}alt=""></img>
                     </Link>
-                    <Link to='/login'>
-                    <img width='40px' src={require('../../../Assets/images/profile.jpg')} alt="">
+                    {/* <Link className="bg-primary text-danger" to='/login'>
+                    <img width='40px' src={require('../../../Assets/images/profile.jpg')}
+                     alt=""
+                    //  style={{filter:'grayscale(1)'}}>
+                      style={{filter: 'hue-rotate(180deg)'}}>
                         
                     </img>
-                  </Link>
+                  </Link> */}
+                  
+                    
+                        <Link to='/login'>
+                        <FontAwesomeIcon className="w-100 fs-3 text-primary " icon={faUser}/>
+                        </Link>
+                    
                 </div>
 
             </div>
