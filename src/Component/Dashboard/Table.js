@@ -2,20 +2,23 @@ import {  faPenToSquare, faPlus, faTrash } from "@fortawesome/free-solid-svg-ico
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {Form , Table } from "react-bootstrap"
 import { Link } from "react-router-dom"
-import { useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import PaginatedItems from "../../Pages/Dashboard/Pagination/Pagination";
 import { Axios } from "../../Api/axios";
 import TranFormDate from "../../Helpers/TranFormDate";
 
+// import { USER } from "../../Api/Api";
+
 export default function TableShow(props){
     //defulte value
-
+ 
+  
     // const p_user=window.location.pathname.slice(-5);
-   
-    const currentUser=props.currentUser || { name:''  } ;
-    const User_adimn=props.role || { name:''  } ;
-   
 
+    const currentUser=props.currentUser || { name:''  } ;
+    const Isadmin=props.role || { name:''  } ;
+          
+        //    console.log(Isadmin)
     const[search,setSearch]=useState('')
     const[date,setDate]=useState('')
     const[filteredData,setFilteredData]=useState([])
@@ -83,7 +86,7 @@ export default function TableShow(props){
     //  const datashow=final.map((item,index)=>(
      const datashow=showwitchData.map((item,index)=>(
         
-     <tr key={index}>
+     <tr key={index} >
          
         <td>{item.id}</td>
         {props.header.map((item2,index2)=>(
@@ -118,7 +121,7 @@ export default function TableShow(props){
                     
             </td>
         ))}
-         {User_adimn==='1995' &&
+         {Isadmin==='1995' &&
         <td >    
             
             <div className="d-flex align-items-center  justify-content-center gap-3">
@@ -142,7 +145,8 @@ export default function TableShow(props){
         </div>
                 
             
-        </td>}
+        </td>
+        }
     </tr>)
     )
    
@@ -176,19 +180,20 @@ return(
    </Form.Control>
  </div>
 
-      <Table  striped bordered hover >
+      <Table  striped bordered hover  >
         
-    <thead className="border primary">
+    <thead className="border primary ">
         <tr >
             <th>id</th>
             {headerShow}
-            {User_adimn==='1995' &&
-          <th className="text-center">Action</th>  }          
+            {Isadmin==='1995' &&
+          <th className="text-center">Action</th> 
+         }           
         </tr>
     </thead>
     <tbody> 
         {props.loading?( 
-        <tr className="text-center">
+        <tr className="text-center ">
             <td colSpan={12}>Loading...</td>
         </tr>):loadingSearch ?( 
         <tr className="text-center">

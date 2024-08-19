@@ -110,7 +110,7 @@ export default function AddProduct(){
         j.current++ ;
         data.append('image',imagesAsFiles[i]);
         data.append('product_id',id);
-        console.log(data)
+        // console.log(data)
         try{
           const res= await Axios.post('/product-img/add',data,{
             onUploadProgress:(ProgressEvent)=>{

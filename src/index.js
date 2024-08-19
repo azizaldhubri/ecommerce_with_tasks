@@ -19,14 +19,15 @@ import WindowContext from './Context/WindowContext';
 
 
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <WindowContext>
-      <MenuContext>
+      <MenuContext>        
         <Router>
         <App />
-        </Router>
+        </Router>              
       </MenuContext>
     </WindowContext>
   </React.StrictMode>

@@ -7,7 +7,7 @@ export default function TransformTime(date){
     const getMinutes=selectedDate.getMinutes().toString().padStart(2,'0');
 
    
-    return `${getFullYear}-${getMonth}-${getDate}-${getHours}:${getMinutes}`
+    return `${getFullYear}-${getMonth}-${getDate} ${getHours}:${getMinutes} ${getHours >=12 ?'PM':'AM'}`
     // return `${getDate}-${getMonth}-${getFullYear}`
 
 } 

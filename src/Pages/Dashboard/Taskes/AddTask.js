@@ -8,15 +8,11 @@ import {  USER, USERS } from "../../../Api/Api"
 export default function AddTaskes(){
    
     const[id,setId]=useState('');
-    const[form,setForm]=useState({
-        receivertask_id:'Select User',
-        title:'' ,
-        
-    });
-    const[receivertask_id,setReceivertask_id]=useState('');
+    const[sender_name,setSender_name]=useState('');
+     const[receivertask_id,setReceivertask_id]=useState('');
     const[title,setTitle]=useState('');
     const[users,setUsers]=useState([]);
-    const[buttonShow,setButtonShow]=useState(true);
+   
 
     
     useEffect(()=>{
@@ -34,6 +30,7 @@ export default function AddTaskes(){
             Axios.get(`${USER}`)
             .then(e=>{
                 setId(e.data.id);                
+                setSender_name(e.data.name);                
                                     })
         }
         catch(err){console.log(err)}
@@ -41,36 +38,46 @@ export default function AddTaskes(){
 
     
 
-   const selectUser=users.map((item,index)=>(
-            item.id !==id &&
-        <option value={item.id}>{item.name}</option>
-       ))
-
-   
-   function handelChange(e){
-    setForm({...form,[e.target.name]:e.target.value});
     
-   }
-
-
-// --------------handleSubmite---------------
-
-   async function handlesubmit(e){
+    
+   
+    
+    // --------------handleSubmite---------------
+    
+    async function handlesubmit(e){
         e.preventDefault();
-
-            const data=new FormData()
-            data.append('title',title);
-            data.append('user_id',id)
-            data.append('receivertask_id',receivertask_id)
-
-            // console.log(...data)
+        
+        const data=new FormData()
+        data.append('title',title);
+        data.append('user_id',id)
+        data.append('sender_name',sender_name)
+        data.append('receiver_id',receivertask_id)
+        data.append('receiver_name',receiver_name)
+        
+        
+        
         try{
-           await Axios.post('tasks/add',data)
-          window.location.pathname='dashboard/taskes'
+               await Axios.post('tasks/add',data)
+              window.location.pathname='dashboard/taskes'
         }
         catch(err){console.log(err)}
-
+        
     }
+
+    const selectUser=users.map((item,index)=>(           
+             item.id !==id &&
+         <option value={item.id}  >{item.name}</option>
+        
+        ))
+        let receiver_name='' ;
+    {receivertask_id &&(
+         users.map((item,index)=>(           
+            item.id ==receivertask_id &&
+            (receiver_name=item.name)
+       
+       
+       ))
+    ) }
              
     return(
         <div className=" w-100  ">
@@ -91,17 +98,23 @@ export default function AddTaskes(){
                         </Form.Control>            
                                                 
                     </Form.Group>
+
+                   
                     <Form.Group  className="d-flex form-control border-0 gap-2">
                             <Form.Select style={{width:'30%'}}
                             value={receivertask_id}
-                            name='receivertask_id'
+                            
+                            // name={receivertask_id}
                             // onChange={handelChange}
-                            onChange={(e)=>setReceivertask_id(e.target.value)}
+                            onChange={(e)=>{setReceivertask_id(e.target.value);
+                              
+
+                            }}
                             >
-                                <option  disabled={true} >Select User</option>
+                                <option  disabled value={''}>Select User</option>
                                 {selectUser}
                             </Form.Select>
-                        {buttonShow && <button className="btn btn-primary ">Add</button>}
+                         <button className="btn btn-primary " disabled ={receiver_name ? false:true }>Add</button>
                         </Form.Group>
         
 

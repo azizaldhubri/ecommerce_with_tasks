@@ -18,7 +18,7 @@ export default function NaveBare(){
     useEffect(()=>{
         
         Axios.get(`${CAT}`)
-        .then(res=>setCategories(res.data.slice(-8)))
+        .then(res=>setCategories(res.data.slice(-7)))
         .finally(()=>setLoading(false))
     },[])
 
@@ -72,7 +72,7 @@ export default function NaveBare(){
 
                     {loading? (
                         <ShowSkeleton
-                        length='8'
+                        length='7'
                         width='80px'
                         height='30px'
                         // baseColor='gray'

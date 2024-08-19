@@ -39,14 +39,14 @@ export default function Login(){
         setLoading(true)
         try{
        const res= await axios.post(`${baseUrl}/${LOGIN}`,form);
-       setLoading(false);
        const token=res.data.token;
        cookie.set('e-commerce',token);
        
-    //    const role=res.data.user.role;
+       //    const role=res.data.user.role;
        //    const go=role==='1995' ?'users':'writer'
-    //    window.location.pathname=`/dashboard/${go}`;
+       //    window.location.pathname=`/dashboard/${go}`;
        window.location.pathname=`/dashboard/users`;
+       setLoading(false);
             }
         catch(err){
             setLoading(false);

@@ -5,6 +5,7 @@ import { USER } from "../../../Api/Api";
 import LoadingSubmit from "../../../Component/Loading/Loading";
 
 
+
 export default function AddUser(){
     
     const [name,setName]=useState('')
@@ -12,10 +13,11 @@ export default function AddUser(){
     const [email,setEmail]=useState('');
     const[password,setPassword]=useState('');
     const[Loading,setLoading]=useState(false);
-
-
-
+    // const[created_at,setCreated_at]=useState('')
+    
+  
     async function HandleSubmit(e){
+
         setLoading(true);
         e.preventDefault();
         try{
@@ -23,7 +25,8 @@ export default function AddUser(){
                 name:name,
                 email:email,
                 password:password,
-                role:role
+                role:role,
+                
             });
             window.location.pathname='/dashboard/users'
         }catch(err){
@@ -73,6 +76,7 @@ export default function AddUser(){
                 <option value='1999'>Product Manger</option>
                 </Form.Select>
            </Form.Group>
+         
             
         
             <button disabled={name.length>1 && 

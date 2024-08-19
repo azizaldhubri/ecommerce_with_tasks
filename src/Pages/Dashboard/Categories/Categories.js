@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { CAT, Cat} from "../../../Api/Api";
+import { CAT, Cat, USER} from "../../../Api/Api";
 
 // import Cookie from 'cookie-universal' ;
 import { Axios } from "../../../Api/axios";
@@ -14,6 +14,12 @@ export default function Categories(){
     const[limit,setLimit]=useState(3)
     const[loading,setLoading]=useState(false)
     const[total,setTotal]=useState(0)
+    const[role,setRole]=useState('')
+    useEffect(()=>{        
+     Axios.get(`/${USER}`)            
+     .then((res)=>{setRole(res.data.role)
+     });         
+ },[]);
 
     
 
@@ -91,6 +97,7 @@ export default function Categories(){
           total={total}
           search='title'
           Linksearch={Cat}
+          role={role}
           />
 
           {/* <PaginatedItems itemsPerPage={5}/> */}

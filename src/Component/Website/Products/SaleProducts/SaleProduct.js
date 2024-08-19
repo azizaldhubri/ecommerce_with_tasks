@@ -52,7 +52,8 @@ const regularStar=Array.from({length:5-star}).map((_,item)=>(
                     
                         <div className="d-flex align-items-center  gap-3">
                                 <p className=" text-primary">{props.price}$</p>
-                                <p className="text-decoration-line-through" style={{color:'gray'}}>{props.discount}$</p>
+                                <p className="text-decoration-line-through" style={{color:'gray'}}>
+                                    {props.discount}$</p>
                         </div>
 
                     </div>   

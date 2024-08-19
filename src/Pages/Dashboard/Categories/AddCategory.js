@@ -16,8 +16,9 @@ export default function AddCategory(){
         form.append('title',title);
         form.append('image',image);
         try{
-            await Axios.post(`${Cat}/add`,form);
-            window.location.pathname='/dashboard/categories'
+            await Axios.post(`${Cat}/add`,form).then(res=>console.log(res))
+
+            // window.location.pathname='/dashboard/categories'
         }catch(err){
             setLoading(false);
             console.log(err)
@@ -42,6 +43,8 @@ export default function AddCategory(){
              <Form.Label>Image:</Form.Label>
                 <Form.Control 
                 type="file"
+                // formEncType="multipart"
+                // formEncType="multipart/form-data"
                 onChange={(e)=>setImage(e.target.files.item(0))}
                 />
            </Form.Group>

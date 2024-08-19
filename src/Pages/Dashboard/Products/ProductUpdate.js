@@ -59,7 +59,8 @@ export default function ProductUpdate(){
        Axios.get(`/${Pro}/${id}`)            
             .then((data)=>{
             setForm(data.data[0]) ;
-            setImagesFormServer(data.data[0].images)
+            setImagesFormServer(data.data[0].images);
+            // console.log(data.data[0].images)
             })
         }
         catch(err){console.log(err)}
@@ -153,8 +154,7 @@ export default function ProductUpdate(){
         setIdsFormServer(prev=>{return [...prev,id]})  
         
         try{
-            
-                     
+                                 
             
           }
           catch(err){
